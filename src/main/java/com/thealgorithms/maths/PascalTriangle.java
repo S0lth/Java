@@ -57,4 +57,41 @@ public class PascalTriangle {
 
         return arr;
     }
+    
+    
+     //version to generate a "triangular" table like this
+   /*   1
+        1       1
+        1       2       1
+        1       3       3       1
+    */
+    public static int[][] pascal(int n) {
+        /**
+         * @param arr  An auxiliary array to store generated pascal triangle values
+         * @return
+         */
+        int arr [][];
+        //
+        arr = new int [n][];
+
+        //length of each line is equal to the length of the previous +1 
+        for(int i= 0 ; i<n ; i++){
+            arr [i] = new int [i+1]; 
+        }
+
+            /**
+             *  @Every line has number of integers equal to line number
+             */
+        for (int i = 0 ; i <n ; i++){
+            for (int j = 0 ; j<i+1 ; j++){
+                if(j==0 || i==j){
+                    arr[i][j]=1;
+                }else{
+                    arr[i][j]=arr[i-1][j-1]+arr[i-1][j];
+                }
+            }
+        }
+    
+        return arr;
+    }
 }
